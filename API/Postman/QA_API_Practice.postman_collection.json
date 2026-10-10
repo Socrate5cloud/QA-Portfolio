@@ -16,7 +16,7 @@
           "script": {
             "type": "text/javascript",
             "exec": [
-              "const jsonData = pm.response.json();\n\npm.collectionVariables.set(\"access_token\", jsonData.accessToken);\n\npm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Access token is received\", function () {\n    pm.expect(jsonData.accessToken).to.exist;\n});\n\npm.test(\"Token saved\", function () {\n    pm.expect(pm.collectionVariables.get(\"access_token\"))\n        .to.eql(jsonData.accessToken);\n});"
+              "const jsonData = pm.response.json();\n\npm.collectionVariables.set(\"access_token\", jsonData.accessToken);\npm.collectionVariables.set(\"refresh_token\", jsonData.refreshToken);\n\npm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Access token is received\", function () {\n    pm.expect(jsonData.accessToken).to.exist;\n});\n\npm.test(\"Token saved\", function () {\n    pm.expect(pm.collectionVariables.get(\"access_token\"))\n        .to.eql(jsonData.accessToken);\n});\n\npm.test(\"Refresh token saved\", function () {\n    pm.expect(pm.collectionVariables.get(\"refresh_token\"))\n        .to.eql(jsonData.refreshToken);\n});"
             ]
           }
         }
@@ -51,6 +51,44 @@
           "path": [
             "auth",
             "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Refresh Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const jsonData = pm.response.json();\r\n\r\npm.collectionVariables.set(\"access_token\", jsonData.accessToken);\r\npm.collectionVariables.set(\"refresh_token\", jsonData.refreshToken);\r\n\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"New access token is received\", function () {\r\n    pm.expect(jsonData.accessToken).to.exist;\r\n});\r\n\r\npm.test(\"New refresh token is received\", function () {\r\n    pm.expect(jsonData.refreshToken).to.exist;\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"refreshToken\": \"{{refresh_token}}\",\r\n  \"expiresInMins\": 30\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/refresh",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "refresh"
           ]
         }
       },
@@ -113,6 +151,10 @@
     {
       "key": "access_token",
       "secret": true
+    },
+    {
+      "key": "refresh_token",
+      "value": ""
     }
   ]
 }
