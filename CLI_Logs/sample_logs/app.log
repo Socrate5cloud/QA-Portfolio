@@ -1,0 +1,3 @@
+2026-10-15 17:40:11 INFO request_id=abc123 POST /payment started
+2026-10-15 17:40:12 ERROR status=500 request_id=abc123 Payment service unavailable
+2026-10-15 17:40:13 INFO request_id=abc123 Request completed with error
