@@ -33,3 +33,4 @@ My QA portfolio: SQL, Manual Testing, API Testing, Python, Pytest and Playwright
 
 
 Git practice started.
+Git workflow practice completed.
