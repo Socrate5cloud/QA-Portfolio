@@ -31,3 +31,5 @@ My QA portfolio: SQL, Manual Testing, API Testing, Python, Pytest and Playwright
 - `Pytest/` — automated API tests
 - `Playwright/` — UI automation
 
+
+Git practice started.
