@@ -1,0 +1,8 @@
+TC-001: Login with valid credentials
+Expected result: User is successfully logged in.
+
+TC-002: Login with invalid password
+Expected result: An error message is displayed.
+
+TC-003: Login with empty fields
+Expected result: Validation messages are displayed.
