@@ -5,4 +5,4 @@ TC-002: Search for a non-existing product
 Expected result: No products found message is displayed.
 
 TC-003: Search with an empty query
-Expected result: The application handles an empty search query correctly.
+Expected result: The message "Enter a search query" is displayed.
